@@ -1,31 +1,31 @@
-N,T = map(int,input().split())
-A = list(map(int,input().split()))
+N, T = map(int, input().split())
+A = list(map(int, input().split()))
 
-t = [0]*N
-y = [0]*N
-n = [0]*2
+col = [0] * N
+row = [0] * N
+n = [0] * 2
 
 cnt = 0
 bingo = False
 for a in A:
-    x=(a-1)//N
-    y=(a-1)%N
-    cnt+=1
-    t[x]+=1
-    y[y]+=1
-    if x==y:
-        n[0]+=1
-        if n[0]==N:
+    x = (a - 1) // N
+    y = (a - 1) % N
+    cnt += 1
+    row[x] += 1
+    col[y] += 1
+    if x == y:
+        n[0] += 1
+        if n[0] == N:
             print(cnt)
             bingo = True
             break
-    if x==y:
-        n[0]+=1
-        if n[0]==N:
+    if x + y == N - 1:
+        n[1] += 1
+        if n[1] == N:
             print(cnt)
             bingo = True
             break
-    if t[(a-1)//N]==N or y[(a-1)%N]==N or  or :
+    if row[x] == N or col[y] == N:
         print(cnt)
         bingo = True
         break
