@@ -1,16 +1,23 @@
-N, K = map(int, input().split())
-A = list(map(int, input().split()))
+N = int(input())
+L, R = [], []
 
-A.sort()
+for i in range(N):
+    l, r = map(int, input().split())
+    L.append(l)
+    R.append(r)
 
-
-s = 0
-e = 0
-
-for i in range(K):
-    if A[N - 1 - e - 1] - A[s] >= A[N - 1 - e] - A[s + 1]:
-        s += 1
+if not (sum(L) <= 0 and sum(R) >= 0):
+    print("No")
+    exit()
+print("Yes")
+X = L.copy()
+sumX = sum(X)
+for i in range(N):
+    if sumX < 0:
+        d = R[i] - L[i]
+        s = min(d, -sumX)
+        X[i] += s
+        sumX += d
     else:
-        e += 1
-
-print(A[N - 1 - e] - A[s])
+        break
+print(*X)
